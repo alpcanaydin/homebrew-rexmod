@@ -1,0 +1,28 @@
+name: Bump rexmod
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Point the formula at the latest release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag=$(gh release view --repo alpcanaydin/rexmod --json tagName --jq .tagName)
+          url="https://github.com/alpcanaydin/rexmod/releases/download/$tag/rexmod-$tag-darwin-arm64.tar.gz"
+          grep -q "$url" Formula/rexmod.rb && { echo "already at $tag"; exit 0; }
+          sha=$(curl -fsSL "$url" | sha256sum | cut -d' ' -f1)
+          sed -i -e "s|^  url \".*\"|  url \"$url\"|" -e "s|^  sha256 \".*\"|  sha256 \"$sha\"|" Formula/rexmod.rb
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "rexmod $tag"
+          git push
