@@ -10,11 +10,11 @@ class Rexmod < Formula
     strategy :github_latest
   end
 
+  depends_on arch: :arm64
   depends_on "fzf"
+  depends_on macos: :sequoia
   depends_on "neovim"
   depends_on "node" # language servers installed with npm
-  depends_on arch: :arm64
-  depends_on macos: :sequoia
 
   def install
     libexec.install Dir["*"]
