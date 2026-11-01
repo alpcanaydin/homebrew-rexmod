@@ -3,6 +3,7 @@
 [rexmod](https://github.com/alpcanaydin/rexmod) turns [Rex](https://rex.superlogical.com) into a harness for your coding agent: a Changes panel, an editor pane and review comments that go back to the agent (Claude Code, Codex, OpenCode, Pi).
 
 ```sh
+brew trust --tap alpcanaydin/rexmod   # Homebrew asks you to trust third-party taps
 brew install alpcanaydin/rexmod/rexmod
 rexmod-setup
 ```
