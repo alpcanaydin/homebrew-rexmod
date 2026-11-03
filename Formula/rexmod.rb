@@ -1,8 +1,8 @@
 class Rexmod < Formula
   desc "Turn Rex into a harness for your coding agent"
   homepage "https://github.com/alpcanaydin/rexmod"
-  url "https://github.com/alpcanaydin/rexmod/releases/download/v0.1.11/rexmod-v0.1.11-darwin-arm64.tar.gz"
-  sha256 "720f58dc5ce9796727ecff27642d047470d45a1f6aec9a8995271ce167b34254"
+  url "https://github.com/alpcanaydin/rexmod/releases/download/v0.1.12/rexmod-v0.1.12-darwin-arm64.tar.gz"
+  sha256 "0b3f21152299cac73dadd6a3027e08ccefe0379bc0d037ae97aad4331ff72d17"
   license "MIT"
 
   livecheck do
